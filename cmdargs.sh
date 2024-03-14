@@ -4,16 +4,15 @@
 
 # Variables
 interfacenames=()
+infologging=no
 
 # Functions
 function displayhelp {
-	echo $(basename "$0") [-h] interfacename ...
+	echo $(basename "$0") [-h] [-l] interfacename ...
 	echo "   -h  display the command line help"
+	echo "   -l  log output generated to the logfile"
 }
-function echoerror {
-	echo "**** Error: " "$*" "****"
-	echo
-}
+source myfuncs
 
 # get the interface to check from the command line
 while [ $# -gt 0 ]; do
@@ -21,6 +20,9 @@ while [ $# -gt 0 ]; do
 		-h )
 			displayhelp
 			exit
+			;;
+		-l )
+			infologging=yes
 			;;
 		* )
 			interfacenames+=("$1")
@@ -44,8 +46,11 @@ for interface in ${interfacenames[@]}; do
 	# Check if there is an address, put an informational message where the address would be in the output
 	if [ "$ip" = "" ]; then
 		ip="No address configured"
+		logwarning "Interface $interface has no configured IPV4 address"
 	fi
 
 	# Produce the interface information
-	echo "$interface: $ip"
+	outputline="$interface: $ip"
+	echo $outputline
+	loginfo "$outputline"
 done
