@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/COMP2137/mylib.sh
+
 declare -a stuffToProcess
 while [ $# -gt 0 ]; do
 	case "$1" in
@@ -13,10 +15,6 @@ while [ $# -gt 0 ]; do
 	esac
 	shift
 done
-
-function myfunc {
-	echo "myfunc run with args: $@"
-}
 
 [ ${#stuffToProcess[@]} ] && echo "Will do work on ${stuffToProcess[@]} (${#stuffToProcess[@]} items)"
 

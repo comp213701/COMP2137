@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source mylib.sh
+
 echo My command was "'$0'"
 echo The first thing on the line after the command was "'$1'"
 echo The second thing on the line after the command was "'$2'"
