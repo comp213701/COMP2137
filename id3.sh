@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Create a script to display the current hostname, IP address, and gateway IP.
 

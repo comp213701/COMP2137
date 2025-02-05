@@ -1,0 +1,9 @@
+MYVAR="my variable"
+alias countfiles='find|wc -l'
+idfunc () 
+{ 
+    echo -n "Hostname: ";
+    hostname;
+    ip r s default | awk '{print $9}';
+    ip r s default | awk '{print $3}'
+}
