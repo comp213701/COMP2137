@@ -36,7 +36,7 @@ for interface in $myinterfaces; do
     [ "$verbose" = "yes" ] && echo "Added interface $interface to hash"
 done
 
-#display the resulting interface ip aconfigurations
+#display the resulting interface ip configurations
 echo "Found ${#myips[@]} interfaces"
 for interface in ${!myips[@]}; do 
     [ "${myips[$interface]}" != "" ] &&
